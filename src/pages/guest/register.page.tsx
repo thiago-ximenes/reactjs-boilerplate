@@ -90,6 +90,7 @@ export default function RegisterPage() {
                 autoFocus
                 error={ !!errors.name }
                 helperText={ errors.name?.message }
+                inputProps={ { 'data-testid': 'register-name' } }
                 { ...register('name') }
               />
             </Grid>
@@ -101,6 +102,7 @@ export default function RegisterPage() {
                 autoComplete="family-name"
                 error={ !!errors.lastName }
                 helperText={ errors.lastName?.message }
+                inputProps={ { 'data-testid': 'register-last-name' } }
                 { ...register('lastName') }
               />
             </Grid>
@@ -112,6 +114,7 @@ export default function RegisterPage() {
                 autoComplete="email"
                 error={ !!errors.email }
                 helperText={ errors.email?.message }
+                inputProps={ { 'data-testid': 'register-email' } }
                 { ...register('email') }
               />
             </Grid>
@@ -124,6 +127,7 @@ export default function RegisterPage() {
                 autoComplete="new-password"
                 error={ !!errors.password }
                 helperText={ errors.password?.message }
+                inputProps={ { 'data-testid': 'register-password' } }
                 { ...register('password') }
               />
             </Grid>
