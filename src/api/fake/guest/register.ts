@@ -5,11 +5,11 @@ import userConfig from "../../../config/user.config.ts";
 import { RegisterRequestType } from "../../../types/requests/register-request.type.ts";
 
 mock.onPost(guestEndpointsConstants.register).reply((request) => {
-  const oldData = localStorage.getItem(userConfig.userKey)
+  const oldData = localStorage.getItem(userConfig.allUsersKey)
   const data = JSON.parse(request.data) as RegisterRequestType
 
   if (!oldData) {
-    localStorage.setItem(userConfig.userKey, JSON.stringify([data]))
+    localStorage.setItem(userConfig.allUsersKey, JSON.stringify([data]))
 
     return [HttpStatusCode.Created]
   }
@@ -24,7 +24,7 @@ mock.onPost(guestEndpointsConstants.register).reply((request) => {
 
   parsedData.push(data)
 
-  localStorage.setItem(userConfig.userKey, JSON.stringify(parsedData))
+  localStorage.setItem(userConfig.allUsersKey, JSON.stringify(parsedData))
 
   return [HttpStatusCode.Created]
 })

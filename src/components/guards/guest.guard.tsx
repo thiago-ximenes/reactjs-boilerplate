@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import guestRoutesConstants from "../../constants/routes/guest-routes.constants.tsx";
 
 export default function GuestGuard({ children }: PropsWithChildren) {
-  const { isAuth } = useAuth();
+  const { auth } = useAuth();
   const navigate = useNavigate();
 
 
@@ -12,10 +12,10 @@ export default function GuestGuard({ children }: PropsWithChildren) {
     const isGuestRouteService = Object.values(guestRoutesConstants).includes(location.pathname)
     const isRootRouteService = location.pathname === '/'
 
-    if (!isAuth && (!isGuestRouteService || isRootRouteService)) {
+    if (!auth.isAuth && (!isGuestRouteService || isRootRouteService)) {
       navigate(guestRoutesConstants.login);
     }
-  }, [isAuth, navigate]);
+  }, [auth.isAuth, navigate]);
 
 
   return (

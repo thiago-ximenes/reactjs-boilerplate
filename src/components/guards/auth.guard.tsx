@@ -5,7 +5,7 @@ import authRoutesConstants from "../../constants/routes/auth-routes.constants.ts
 import guestRoutesConstants from "../../constants/routes/guest-routes.constants.tsx";
 
 export default function AuthGuard({ children }: PropsWithChildren) {
-  const { isAuth } = useAuth();
+  const { auth } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,11 +13,11 @@ export default function AuthGuard({ children }: PropsWithChildren) {
     const isRootRouteService = location.pathname === '/'
 
 
-    if (isAuth && (isGuestRouteService || isRootRouteService)) {
+    if (auth.isAuth && (isGuestRouteService || isRootRouteService)) {
       navigate(authRoutesConstants.productList);
     }
 
-  }, [isAuth, navigate]);
+  }, [navigate, auth.isAuth]);
 
   return (
     <>

@@ -8,7 +8,7 @@ import { RegisterRequestType } from "../../../types/requests/register-request.ty
 mock.onPost(guestEndpointsConstants.login).reply((request) => {
   const data = JSON.parse(request.data) as LoginRequestType
 
-  const allStorageUsers = (localStorage.getItem(userConfig.userKey))
+  const allStorageUsers = (localStorage.getItem(userConfig.allUsersKey))
 
   const users = allStorageUsers ? JSON.parse(allStorageUsers) : []
 
