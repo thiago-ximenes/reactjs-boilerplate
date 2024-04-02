@@ -11,7 +11,7 @@ import { getUserService } from "../services/user/get-user.service.ts";
 export default function AuthProvider({ children }: PropsWithChildren) {
   const [auth, setAuth] = useState<AuthContextType['auth']>({
     isAuth: hasAuthorizationService,
-    user: getUserService ? getUserService[0] : null,
+    user: getUserService,
   });
 
   const login = useCallback((data: LoginRequestType, errorAction: () => void) => {

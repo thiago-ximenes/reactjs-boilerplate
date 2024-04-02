@@ -11,7 +11,7 @@ import registerRequest from "../../requests/guest/register.request.ts";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { RegisterRequestType } from "../../types/requests/register-request.type.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { registerRequestSchema } from "../../schemas/register-request.schema.ts";
+import { registerRequestSchema } from "../../schemas/guest/register-request.schema.ts";
 import { useState } from "react";
 import guestRoutesConstants from "../../constants/routes/guest-routes.constants.tsx";
 

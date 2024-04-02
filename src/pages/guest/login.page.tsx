@@ -11,7 +11,7 @@ import useAuth from "../../hooks/use-auth.tsx";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LoginRequestType } from "../../types/requests/login-request.type.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginRequestSchema } from "../../schemas/login-request.schema.ts";
+import { loginRequestSchema } from "../../schemas/guest/login-request.schema.ts";
 import { useState } from "react";
 
 export default function LoginPage() {

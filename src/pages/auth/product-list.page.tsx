@@ -2,12 +2,16 @@ import { useEffect, useState } from "react";
 import productListRequest from "../../requests/auth/product-list.request.ts";
 import { ProductListResponse } from "../../types/responses/product-list-response.type.ts";
 import Container from "@mui/material/Container";
-import { Card, CardContent, Typography, IconButton } from "@mui/material";
+import { Card, CardContent, Typography, IconButton, Tooltip } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from "react-router-dom";
+import authRoutesConstants from "../../constants/routes/auth-routes.constants.ts";
 
 export default function ProductListPage() {
   const [data, setData] = useState<ProductListResponse | null>(null)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     productListRequest().then((response) => {
@@ -49,8 +53,16 @@ export default function ProductListPage() {
                     </Typography>
                   </Grid>
                   <Grid item xs={ 2 }>
-                    <IconButton color="warning" aria-label="editar produto">
-                      <EditIcon/>
+                    <IconButton
+                      color="warning"
+                      aria-label="editar produto"
+                      onClick={
+                        () => navigate(authRoutesConstants.productListById.replace(':id', String(product.id)))
+                      }
+                    >
+                      <Tooltip title="Editar" placement="top">
+                        <EditIcon/>
+                      </Tooltip>
                     </IconButton>
                   </Grid>
                 </Grid>
