@@ -27,7 +27,7 @@ export default function AuthLayout() {
           </Grid>
         </Grid>
       </AppBar>
-      <Box pl={ 3 }>
+      <Box px={ 3 } py={6}>
         <Outlet/>
       </Box>
     </>

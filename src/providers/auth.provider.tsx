@@ -11,7 +11,7 @@ import { getUserService } from "../services/user/get-user.service.ts";
 export default function AuthProvider({ children }: PropsWithChildren) {
   const [auth, setAuth] = useState<AuthContextType['auth']>({
     isAuth: hasAuthorizationService,
-    user: getUserService,
+    user: getUserService ? getUserService[0] : null,
   });
 
   const login = useCallback((data: LoginRequestType, errorAction: () => void) => {
@@ -21,6 +21,9 @@ export default function AuthProvider({ children }: PropsWithChildren) {
           isAuth: true,
           user: response.data.user,
         });
+
+        console.log(response.data.user)
+
         sessionStorage.setItem(authConfig.tokenKey, response.data.token);
         sessionStorage.setItem(userConfig.userKey, JSON.stringify(response.data.user));
       })
