@@ -71,6 +71,7 @@ export default function LoginPage() {
         }
         <Box component="form" onSubmit={ handleSubmit(onSubmit) } noValidate sx={ { mt: 1 } }>
           <TextField
+            inputProps={ { 'data-testid': 'login-email' } }
             margin="normal"
             required
             fullWidth
@@ -85,6 +86,7 @@ export default function LoginPage() {
           <TextField
             margin="normal"
             required
+            inputProps={ { 'data-testid': 'login-password' } }
             fullWidth
             label="Senha"
             type="password"
